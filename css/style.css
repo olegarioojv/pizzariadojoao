@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+}
+
+/* NAVBAR */
+
+#brand-logo {
+    width: 50px;
+}
+
+.navbar.navbar-expand-lg {
+    background-color: #000000;
+    font-weight: bold;
+}
+
+.navbar.navbar-expand-lg a {
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    position:  relative;
+    width: 100%;
+    height: 175px;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
