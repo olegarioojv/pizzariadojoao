@@ -1,3 +1,19 @@
+<?php
+    include_once("process/conn.php");
+
+    $msg = "";
+
+    if(isset($_SESSION["msg"])) {
+
+        $msg = $_SESSION["msg"];
+        $status = $_SESSION["status"];  
+
+        $_SESSION["msg"] = "";
+        $_SESSION["status"] = "";
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +25,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- App CSS -->
-     <link rel="stylesheet" href="css/style32.css">
+     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -30,8 +46,11 @@
             </div>
         </nav>
     </header>
-    <div class="alert alert-success">
-        <strong>Pedido realizado com sucesso!</strong> 
+
+    <?php if($msg != ""): ?>
+    <div class="alert alert-<?= $status ?>">
+        <p><?= $msg ?></p>
     </div>
+    <?php endif; ?>
 
   
