@@ -89,6 +89,49 @@ html, body {
   .alert p {
     margin-bottom: 0;
   }
+~
+  /* DASHBOARD */
+
+  .delete-btn, .update-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .delete-btn {
+    padding-top: 10px;
+  }
+
+  .delete-btn i {
+    color: #dc3545;
+    font-size: 20px;
+  }
+
+  .update-btn {
+    margin-left: 10px;
+  }
+
+  .update-btn i {
+    color: #007bff;
+  }
+
+  .update-form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .status-input {
+    width: 60%;
+  }
+
+  .tuble ul {
+    text-align: left;
+  }
+
+
+
+
+
 
   /* FOOTER */
 footer {
