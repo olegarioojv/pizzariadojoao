@@ -89,7 +89,7 @@
             array_push($pizzas, $pizza);
         }
 
-        print_r($pizzas);
+        // print_r($pizzas);
 
          // Resgatando os status
          $statusQuery = $conn->query("SELECT * FROM status");
@@ -97,6 +97,52 @@
          $status = $statusQuery->fetchAll();
 
     } else if($method === "POST") {
+
+        // Verificando tipo de POST
+
+        $type = $_POST["type"];
+
+        // Deletar pedido
+        if ($type == "delete") {
+
+            $pizzaId = $_POST["id"];
+
+            $deleteQuery = $conn->prepare ("DELETE FROM pedidos WHERE pizza_id = :pizza_id");
+
+            $deleteQuery->bindParam(":pizza_id", $pizzaId, PDO::PARAM_INT);
+
+            $deleteQuery->execute();
+
+            $_SESSION["msg"] = "Pedido deletado com sucesso!";
+            $_SESSION["status"] = "success";
+
+            // Atualizar status do pedido
+        } else if ($type == "update") {
+
+            $pizzaId = $_POST["id"];
+            $statusId = $_POST["status"];
+
+            $updateQuery = $conn->prepare("UPDATE pedidos SET status_id = :status_id WHERE pizza_id = :pizza_id");
+
+            $updateQuery->bindParam(":status_id", $statusId, PDO::PARAM_INT);
+            $updateQuery->bindParam(":pizza_id", $pizzaId, PDO::PARAM_INT);
+
+            $updateQuery->execute();
+
+            $_SESSION["msg"] = "Status atualizado com sucesso!";
+            $_SESSION["status"] = "success";
+
+        }
+
+
+        // Retorna usuario para para deshboard
+
+        header ("Location: ../dashboard.php");
+
+
+
+
+
 
     }
 
